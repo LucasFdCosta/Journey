@@ -141,7 +141,7 @@ export function App() {
             {/* Invite guest */}
             <form onSubmit={addNewEmailToInvite} className="p-2.5 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
               <div className="px-2 flex items-center flex-1 gap-2">
-                <AtSign className="textzinc-400 size-5" />
+                <AtSign className="text-zinc-400 size-5" />
                 <input
                   type="email"
                   name="email"

@@ -9,7 +9,14 @@ namespace Journey.Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=C:\\MyProjects\\Journey\\JourneyDatabase.db");
+            optionsBuilder.UseSqlite("Data Source=C:\\MyProjects\\Journey\\api\\JourneyDatabase.db");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Activity>().ToTable("Activities");
         }
     }
 }
