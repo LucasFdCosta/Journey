@@ -1,5 +1,6 @@
 ﻿using Journey.Application.UseCases.Activities.Complete;
-﻿using Journey.Application.UseCases.Activities.Register;
+using Journey.Application.UseCases.Activities.Delete;
+using Journey.Application.UseCases.Activities.Register;
 using Journey.Application.UseCases.Trips.Delete;
 using Journey.Application.UseCases.Trips.GetAll;
 using Journey.Application.UseCases.Trips.GetById;
@@ -98,6 +99,19 @@ namespace Journey.Api.Controllers
         public IActionResult FinishActivity([FromRoute] Guid tripId, [FromRoute] Guid activityId)
         {
             var useCase = new CompleteActivityForTripUseCase();
+
+            useCase.Execute(tripId, activityId);
+
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Route("{tripId}/activity/{activityId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorsJson), StatusCodes.Status404NotFound)]
+        public IActionResult DeleteActivity([FromRoute] Guid tripId, [FromRoute] Guid activityId)
+        {
+            var useCase = new DeleteActivityForTripUseCase();
 
             useCase.Execute(tripId, activityId);
 
