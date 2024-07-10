@@ -44,7 +44,7 @@ namespace Journey.Application.UseCases.Trips.Register
             {
                 var errorMessages = result.Errors.Select(error => error.ErrorMessage).ToList();
 
-                throw new ErronOnValidationException(errorMessages);
+                throw new ErrorOnValidationException(errorMessages);
             }
         }
     }

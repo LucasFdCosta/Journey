@@ -2,11 +2,11 @@
 
 namespace Journey.Exception.ExceptionsBase
 {
-    public class ErronOnValidationException : JourneyException
+    public class ErrorOnValidationException : JourneyException
     {
         private readonly IList<string> _errors;
 
-        public ErronOnValidationException(IList<string> messages) : base(string.Empty)
+        public ErrorOnValidationException(IList<string> messages) : base(string.Empty)
         {
             _errors = messages;
         }
