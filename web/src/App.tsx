@@ -1,4 +1,4 @@
-import { MapPin, Calendar, ArrowRight, UserRoundPlus, Settings2, X, AtSign, Plus } from "lucide-react";
+import { MapPin, Calendar, ArrowRight, UserRoundPlus, Settings2, X, AtSign, Plus, User, Mail } from "lucide-react";
 import { useState } from "react";
 
 /**
@@ -9,6 +9,7 @@ import { useState } from "react";
 export function App() {
   const [isGuestInputOpen, setIsGuestInputOpen] = useState(false);
   const [isGuestModalOpen, setIsGuestModalOpen] = useState(false);
+  const [isConfirmTripModalOpen, setIsConfirmTripModalOpen] = useState(false);
   const [emailsToInvite, setEmailsToInvite] = useState(["lucas@email.com", "pedro@email.com"]);
 
   function openGuestsInput() {
@@ -27,9 +28,17 @@ export function App() {
     setIsGuestModalOpen(false);
   }
 
+  function openConfirmTripModal() {
+    setIsConfirmTripModalOpen(true);
+  }
+
+  function closeConfirmTripModal() {
+    setIsConfirmTripModalOpen(false);
+  }
+
   function addNewEmailToInvite(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    
+
     const data = new FormData(e.currentTarget);
     const email = data.get("email")?.toString();
 
@@ -92,12 +101,18 @@ export function App() {
             <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">
               <button type="button" onClick={openGuestsModal} className="flex items-center gap-2 flex-1 text-left outline-none">
                 <UserRoundPlus className="size-5 text-zinc-400" />
-                <span className="text-zinc-400 text-lg flex-1">Who will be going?</span>
+                {
+                  emailsToInvite.length > 0 ? (
+                    <span className="text-zinc-100 text-lg flex-1">{emailsToInvite.length} people invited</span>
+                  ) : (
+                    <span className="text-zinc-400 text-lg flex-1">Who will be going?</span>
+                  )
+                }
               </button>
 
               <div className="w-px h-6 bg-zinc-800" />
 
-              <button className="bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400">
+              <button onClick={openConfirmTripModal} className="bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400">
                 Confirm trip
                 <ArrowRight className="size-5" />
               </button>
@@ -110,6 +125,7 @@ export function App() {
         </p>
       </div>
 
+      {/* Guest modal */}
       {isGuestModalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
           <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
@@ -153,6 +169,48 @@ export function App() {
               <button type="submit" className="bg-lime-300 text-lime-950 rounded-lg px-5 py-2 font-medium flex items-center gap-2 hover:bg-lime-400">
                 Invite
                 <Plus className="size-5" />
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Confirm trip modal */}
+      {isConfirmTripModalOpen && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
+          <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <h2 className="text-lg font-semibold">Confirm trip creation</h2>
+                <button onClick={closeConfirmTripModal}><X className="size-5 text-zinc-400" /></button>
+              </div>
+              <p className="text-sm text-zinc-400">
+                To finish the creation of the trip to <span className="text-zinc-100 font-semibold">São Paulo, Brasil</span> from <span className="text-zinc-100 font-semibold">August 16th 2024 to August 17th 2024</span>, fill your info below
+              </p>
+            </div>
+
+            <form onSubmit={addNewEmailToInvite} className="space-y-3">
+              <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
+                <User className="text-zinc-400 size-5" />
+                <input
+                  name="name"
+                  placeholder="Full name"
+                  className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+                />
+              </div>
+
+              <div className="h-14 px-4 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
+                <Mail className="text-zinc-400 size-5" />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+                />
+              </div>
+
+              <button type="submit" className="w-full justify-center bg-lime-300 text-lime-950 rounded-lg px-5 h-11 font-medium flex items-center gap-2 hover:bg-lime-400">
+                Confirm trip creation
               </button>
             </form>
           </div>
