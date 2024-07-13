@@ -1,14 +1,18 @@
 import { Mail, User, X } from "lucide-react";
-import { Button } from "../components/button";
+import { Button } from "../../components/button";
 
 interface ConfirmTripModalProps {
   closeConfirmTripModal: () => void;
   createTrip: (e: React.FormEvent<HTMLFormElement>) => void;
+  setOwnerName: (name: string) => void;
+  setOwnerEmail: (email: string) => void;
 }
 
 export function ConfirmTripModal({
   closeConfirmTripModal,
-  createTrip
+  createTrip,
+  setOwnerName,
+  setOwnerEmail
 }: ConfirmTripModalProps) {
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
@@ -30,6 +34,7 @@ export function ConfirmTripModal({
               name="name"
               placeholder="Full name"
               className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+              onChange={(e) => setOwnerName(e.target.value)}
             />
           </div>
 
@@ -40,6 +45,7 @@ export function ConfirmTripModal({
               name="email"
               placeholder="Email"
               className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+              onChange={(e) => setOwnerEmail(e.target.value)}
             />
           </div>
 
