@@ -19,7 +19,7 @@ export function ConfirmTripModal({
             <button onClick={closeConfirmTripModal}><X className="size-5 text-zinc-400" /></button>
           </div>
           <p className="text-sm text-zinc-400">
-            To finish the creation of the trip to <span className="text-zinc-100 font-semibold">São Paulo, Brasil</span> from <span className="text-zinc-100 font-semibold">August 16th 2024 to August 17th 2024</span>, fill your info below
+            To complete the creation of the trip to <span className="text-zinc-100 font-semibold">São Paulo, Brasil</span> from <span className="text-zinc-100 font-semibold">August 16 to 25, 2024</span>, fill in your info below
           </p>
         </div>
 
