@@ -1,30 +1,55 @@
-# React + TypeScript + Vite
+# Journey
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Journey: Plann.er travel management
 
-Currently, two official plugins are available:
+## Project Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The purpose of this application is to help manage trips with friends.
 
-## Expanding the ESLint configuration
+## Table of Contents
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
 
-- Configure the top-level `parserOptions` property like this:
+## Prerequisites
+- [Node.js](https://nodejs.org/en/)
+- [NPM](https://www.npmjs.com/)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Installation
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Clone the repo:
+    ```bash
+    git clone https://github.com/LucasFdCosta/Journey.git
+    ```
+2. Navigate into the project directory:
+    ```bash
+    cd Journey
+    ```
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
+4. Start the development server:
+    ```bash
+    npm run dev
+    ```
+
+## Usage
+
+To use the application, open your web browser and go to `http://localhost:5173`. Here you will find the interface of the **Plann.er** React app, which allows you to interact with trips planning, date spans managing, guests invitation and presence confirmation for trips and activities managing.
+
+## Features
+
+- Trip managing
+- Guests invitation
+- Activities handling
+- Important links
+- Automatic e-mail send to trip owner and guests
+
+## Contact Information
+
+Lucas - lucas.co090869@gmail.com
+
+Project Link: [https://github.com/LucasFdCosta/Journey](https://github.com/LucasFdCosta/Journey)
